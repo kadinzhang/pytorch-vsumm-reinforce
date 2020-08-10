@@ -20,13 +20,8 @@ class ResNet(nn.Module):
             transforms.ToTensor(),
             transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
         ])
-
-        if fea_type == 'resnet101':
-            resnet = models.resnet101(pretrained=True)  # dim of pool5 is 2048
-        elif fea_type == 'resnet152':
-            resnet = models.resnet152(pretrained=True)
-        else:
-            raise Exception('No such ResNet!')
+        resnet = models.googlenet(pretrained=True)
+       
 
         resnet.float()
         resnet.cuda()
